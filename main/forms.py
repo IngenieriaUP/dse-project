@@ -1,7 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Localizacion, Categoria
+
+from .models import *
 
 class UserForm(UserCreationForm):
     # django.contrib.auth.User attributes

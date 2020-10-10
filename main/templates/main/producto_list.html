@@ -1,21 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h3> Productos </h3>
-    <ul>
-      {% for producto in object_list %}
-        <li>
-          <a href="{% url 'product-detail' producto.pk %}">
-            {{ producto.nombre }}
-          </a>
-          - {{ producto.precio }}
-        </li>
-      {% empty %}
-        <li>Aun no hay productos disponibles.</li>
-      {% endfor %}
-    </ul>
+    <h3 class="title"> Productos </h3>
+    <div class="content">
+        <ul>
+          {% for producto in object_list %}
+            <li>
+              <a href="{% url 'product-detail' producto.pk %}">
+                {{ producto.nombre }}
+              </a>
+              - {{ producto.precio }}
+            </li>
+          {% empty %}
+            <li>Aun no hay productos disponibles.</li>
+          {% endfor %}
+        </ul>
+    </div>
     <hr>
-    <ul>
-      <li> <a href="{% url 'home' %}">Inicio</a> </li>
-    </ul>
+    <div class="content">
+        <ul>
+          <li> <a href="{% url 'home' %}">Inicio</a> </li>
+        </ul>
+    </div>
 {% endblock %}
