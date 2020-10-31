@@ -24,6 +24,7 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.get_username()
 
+
 class Colaborador(models.Model):
     # Relacion con el modelo Perfil
     user_profile = models.OneToOneField(Profile, on_delete=models.CASCADE)
@@ -35,6 +36,7 @@ class Colaborador(models.Model):
     def __str__(self):
         return f'Colaborador: {self.user_profile.user.get_username()}'
 
+
 class Localizacion(models.Model):
     distrito = models.CharField(max_length=20)
     provincia = models.CharField(max_length=20)
@@ -42,6 +44,7 @@ class Localizacion(models.Model):
 
     def __str__(self):
         return f'{self.distrito}, {self.provincia}, {self.departamento}'
+
 
 class Cliente(models.Model):
     # Relacion con el modelo Perfil
@@ -53,12 +56,14 @@ class Cliente(models.Model):
     def __str__(self):
         return f'Cliente: {self.user_profile.user.get_username()}'
 
+
 class Categoria(models.Model):
     codigo = models.CharField(max_length=4)
     nombre = models.CharField(max_length=20)
 
     def __str__(self):
         return f'{self.codigo}: {self.nombre}'
+
 
 class Producto(models.Model):
     # Relaciones
@@ -84,6 +89,12 @@ class Producto(models.Model):
 
         return f'{codigo_categoria}-{codigo_producto}'
 
+
+class ProductoImage(models.Model):
+    product = models.ForeignKey('Producto', on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to="products", null=True, blank=True)
+
+
 class Proveedor(models.Model):
     ruc = models.CharField(max_length=11)
     razon_social = models.CharField(max_length=20)
@@ -91,6 +102,7 @@ class Proveedor(models.Model):
 
     def __str__(self):
         return self.razon_social
+
 
 class Pedido(models.Model):
     # Relaciones
@@ -115,6 +127,7 @@ class Pedido(models.Model):
             total += detalle.get_subtotal()
         total += self.tarifa
         return total
+
 
 class DetallePedido(models.Model):
     # Relaciones
