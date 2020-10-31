@@ -139,3 +139,4 @@ cython_debug/
 
 # Custom
 paypal_sb_creds.txt
+media/
