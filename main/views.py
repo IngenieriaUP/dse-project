@@ -23,6 +23,12 @@ class HomePageView(TemplateView):
 class ProductListView(ListView):
     model = Producto
 
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Producto.objects.filter(nombre__icontains=query)
+
+        return object_list
+
 class ProductDetailView(DetailView):
     model = Producto
 
