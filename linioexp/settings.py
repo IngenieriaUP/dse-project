@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'storages',
     'main.apps.MainConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -134,3 +135,8 @@ EMAIL_HOST = 'smtp.mailtrap.io'
 EMAIL_HOST_USER = '6122cdde52eb4e'
 EMAIL_HOST_PASSWORD = 'b73ad40ad76566'
 EMAIL_PORT = '2525'
+
+# Django Storages
+
+DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+DROPBOX_OAUTH2_TOKEN = 'sl.Akm47PxxrmQ0d-NAR6MflrCTV8Uu-D-ToaX5JXgxBi_GtB7jbupHUkfaOV0byHnirrPwknkscGa-30S7DfYY3Y9eQQv_Qxb8UnLwov1RIsbQ2zNjXkJos_IyFO8P48z9pyU_CqQ'
